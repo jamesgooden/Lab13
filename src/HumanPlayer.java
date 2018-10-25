@@ -1,51 +1,35 @@
 import java.util.Scanner;
 
+
+
 public class HumanPlayer  extends Player {
 
 	private Scanner scan;
 	@Override
 	public  Roshamb generateRoshamb() {
 		scan = new Scanner(System.in);
-	String  userInput =	ValidationMethods.getString(scan, "Rock , Paper , or Scissors? R/P/S");
+	String  userInput =	ValidationMethods.getStringMatchingRegex(scan, "Please enter rock paper or scissor " ,"^[A-z]+${30}" );
 	
-	if (userInput.equalsIgnoreCase("R"))  {
+	if (userInput.equalsIgnoreCase("ROCK"))  {
 	return 	Roshamb.ROCK;
 	}
-	else if (userInput.equalsIgnoreCase("P"))  {
+	else if (userInput.equalsIgnoreCase("PAPER"))  {
 		
 		return Roshamb.PAPER;
-		
 	}
-	else if (userInput.equalsIgnoreCase("S"))  {
+	else if (userInput.equalsIgnoreCase("SCISSORS")) {
+		
+		return Roshamb.SCISSORS;
+	}
+	else {
 		return Roshamb.SCISSORS;
 	}
 	
 	
-	return Roshamb.SCISSORS;
+
 	
 	
 	}
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return super.getName();
-	}
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		super.setName(name);
-	}
-	@Override
-	public Roshamb getValue() {
-		// TODO Auto-generated method stub
-		return super.getValue();
-	}
-	@Override
-	public void setValue(Roshamb value) {
-		// TODO Auto-generated method stub
-		super.setValue(value);
-	}
-	
 	
 }
 //	@Override

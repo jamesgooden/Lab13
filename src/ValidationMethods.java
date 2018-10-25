@@ -1,4 +1,6 @@
 
+
+
 import java.util.Scanner;
 
 public class  ValidationMethods {
@@ -101,7 +103,7 @@ public class  ValidationMethods {
 			return input;
 		}
 
-		public static int getInt(Scanner sc, String prompt, int min) {
+		public static int getInt(Scanner sc, String prompt, int min ) {
 			int i = 0;
 			boolean isValid = false;
 			while (isValid == false) {

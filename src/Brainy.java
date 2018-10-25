@@ -19,12 +19,11 @@ public class Brainy extends Player {
 
 	}
 
-	@Override
-	public String toString() {
-		return "Brainy [scan=" + scan + ", generateRoshamb()=" + generateRoshamb() + "]";
-	}
-
-	
-	
+//	@Override
+//	public String toString() {
+//		return generateRoshamb();
+//
+//	}
+//	
 	
 }

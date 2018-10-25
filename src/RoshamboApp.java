@@ -11,46 +11,80 @@ public class RoshamboApp {
 		Roshamb userValue;
 		Roshamb opponentValue;
 		String userName;
+		String userContinue;
 
-		// prompt user to enter name. Validate input.
+		System.out.println("Welcome To The Rock Paper Scissors App");
 
-		System.out.println("Welcome to Rock Paper Scissors");
-
-		userName = ValidationMethods.getString(scan, "Please enter your name ");
+		userName = ValidationMethods.getStringMatchingRegex(scan, "Hello ,what's your name? ", "^[A-z]+${30}");
 		user.setName(userName);
-		// prompt user to select opponent validate input
-		String userChoice = ValidationMethods.getString(scan,
-				"Would you like to play against TheJets or the TheSharks?  (j/s?)");
-		if (userChoice.equalsIgnoreCase("j")) {
-			opponent = new RockHead();
- //   System.out.println(opponent);
+		System.out.println("Nice to meet you " + userName + " goodluck! ");
+
+		do {
+			String userChoice = ValidationMethods.getStringMatchingRegex(scan,
+					"Would you like to play against Jets or the Sharks? ", "^[A-z]+${30}");
+			if (userChoice.equalsIgnoreCase("JETS")) {
+				opponent = new RockHead();
+			} else if (userChoice.equalsIgnoreCase("SHARKS")) {
+
+				opponent = new Brainy();
+			} else {
+				opponent = new RockHead();
+			}
+			userValue = user.generateRoshamb();
+
+			System.out.println("You Entered: " + userValue);
+			// prompt user to select rock paper or scissors validate input
+			opponentValue = opponent.generateRoshamb();
+			// opponent.setValue(opponentValue);
+			System.out.println("Your Opponent: " + opponentValue);
+
+			winOrLose(userValue, opponentValue);
+			System.out.println("Would you like to play again?");
+			userContinue = scan.next();
+		} while (userContinue.equalsIgnoreCase("Y"));
+
+		System.out.println("Thanks for playing " + userName + ". goodbye!");
+	}
+
+	public static void winOrLose(Roshamb userValue, Roshamb opponentValue) {
+		int gamesWonForUser = 0;
+		int gamesWonByOpponent = 0;
+		int Stalemates = 0;
+
+		if (userValue == Roshamb.ROCK && opponentValue == Roshamb.ROCK) {
+			System.out.println("ITS A DRAW");
+			Stalemates = Stalemates + 1;
+			// System.out.println(" Your Score : " + Stalemates);
+		} else if (userValue == Roshamb.ROCK && opponentValue == Roshamb.PAPER) {
+			System.out.println("YOUR OPPONENT WINS");
+			gamesWonByOpponent = gamesWonByOpponent + 1;
+			// System.out.println("Your score " + games);
+		} else if (userValue == Roshamb.ROCK && opponentValue == Roshamb.SCISSORS) {
+			System.out.println("YOU WIN");
+			gamesWonForUser = gamesWonForUser + 1;
+		} else if (userValue == Roshamb.PAPER && opponentValue == Roshamb.PAPER) {
+			System.out.println("ITS A DRAW");
+			Stalemates = Stalemates + 1;
+		} else if (userValue == Roshamb.PAPER && opponentValue == Roshamb.SCISSORS) {
+			System.out.println("YOUR OPPONENT WINS");
+			gamesWonByOpponent = gamesWonByOpponent + 1;
+		} else if (userValue == Roshamb.PAPER && opponentValue == Roshamb.ROCK) {
+			System.out.println("YOU WIN");
+			gamesWonForUser = gamesWonForUser + 1;
+		} else if (userValue == Roshamb.SCISSORS && opponentValue == Roshamb.SCISSORS) {
+			System.out.println("ITS A DRAW");
+			Stalemates = Stalemates + 1;
+		} else if (userValue == Roshamb.SCISSORS && opponentValue == Roshamb.ROCK) {
+			System.out.println("YOUR OPPONENT WINS");
+			gamesWonByOpponent = gamesWonByOpponent + 1;
+		} else if (userValue == Roshamb.SCISSORS && opponentValue == Roshamb.PAPER) {
+			System.out.println("YOU WIN");
+			gamesWonForUser = gamesWonForUser + 1;
 		}
-		else if(userChoice.equalsIgnoreCase("s")) {
-			
-			opponent = new Brainy();
-		}
-		// prompt user to select rock paper or scissors validate input
-        
-		String rockPaperScissor = ValidationMethods.getString(scan, "Rock , Paper , Or Scissors? R/P/S");
-		if (rockPaperScissor.equalsIgnoreCase("R")) {
-		
-	          System.out.println("rock");
-		}
-		else if (rockPaperScissor.equalsIgnoreCase("P"))  {
-			System.out.println("paper");
-		}
-      
-		else if (rockPaperScissor.equalsIgnoreCase("S")) {
-			System.out.println("scissors");
-		}
-	// display opponents choice
-		System.out.println(opponent);
-		
-		// display users choice
-          
-		// display results of match write a seperate method.
-              
-		// prompt user to continue . Validate input
+
+		System.out.println("You won " + gamesWonForUser);
+		System.out.println("Your opponent won " + gamesWonByOpponent);
+		System.out.println("Stalemate " + Stalemates);
 
 	}
 

@@ -6,11 +6,11 @@ public class RockHead  extends Player {
 	
 		return Roshamb.ROCK;
 	}
-
-	@Override
-	public String toString() {
-		return "rock";
-	}
-	
+//
+//	@Override
+//	public String toString() {
+//		return "rock";
+//	}
+//	
 	
 }

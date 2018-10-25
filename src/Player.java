@@ -1,14 +1,14 @@
-import java.util.Scanner;
+
 
 public abstract class Player {
 private String name;
 private Roshamb value;
-Scanner scan = new Scanner(System.in);
-public abstract  Roshamb generateRoshamb(); {
+
+public abstract  Roshamb generateRoshamb();
 	
 	
 	
-}
+
 
 
 public Player() {
